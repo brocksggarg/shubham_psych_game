@@ -15,10 +15,18 @@ public class GameApplication {
 }
 
 
+
 @RestController
 class Hello{
+	String msg="";
+	
 	@RequestMapping("/hello")
 	public String hello() {
-		return "hello";
+		return msg;
+	}
+	@RequestMapping("/add/{msg}")
+	public String addMsg(String m) {
+		msg=m;
+		return "added";
 	}
 }
