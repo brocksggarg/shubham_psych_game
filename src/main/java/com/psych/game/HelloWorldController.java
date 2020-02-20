@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/dev-test")
@@ -62,8 +63,8 @@ public class HelloWorldController {
     }
 
     @GetMapping("/question/{id}")
-    public Question getQuestionById(@PathVariable(name = "id") Long id) {
-        return questionRepository.findById(id).orElseThrow();
+    public Optional<Question> getQuestionById(@PathVariable(name = "id") Long id) {
+        return questionRepository.findById(id);
     }
 
     @GetMapping("/players")
@@ -72,8 +73,8 @@ public class HelloWorldController {
     }
 
     @GetMapping("/player/{id}")
-    public Player getPlayerById(@PathVariable(name = "id") Long id) {
-        return playerRepository.findById(id).orElseThrow();
+    public Optional<Player> getPlayerById(@PathVariable(name = "id") Long id) {
+        return playerRepository.findById(id);
     }
 
     // Games
